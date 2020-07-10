@@ -1,0 +1,7 @@
+<data> ::= <bytes>
+<bytes> ::= <byte> | <byte> <bytes> | <bytes> <byte>
+<byte> ::= <bits4> <bits3> <bit> | <bits2> <bits4> <bits2> | <bit> <bits4> <bits2> <bit> | <bits3> <bits3> <bits2>
+<bits4> ::= <bits2> <bits2> | <bits3> <bit> | <bit> <bits3>
+<bits3> ::= <bits2> <bit> | <bit> <bits2> | <bit> <bit> <bit>
+<bits2> ::= <bit> <bit>
+<bit> ::= 0 | 1

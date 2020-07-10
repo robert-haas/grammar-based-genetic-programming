@@ -1,0 +1,408 @@
+Reproduce a paper example of the GE mapping with detailed log messages
+======================================================================
+
+1) Create a grammar
+
+  <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+  <op>::=+|-|/|*
+  <pre-op>::=Sin
+  <var>::=X|1.0
+
+  Some properties
+    Start symbol:           <expr>
+    Number of nonterminals: 4
+    Number of terminals:    11
+    Number of productions:  11
+
+2) Create a GE genotype (=list of integers)
+
+  Chromosome Contents: 220,40,16,203,101,53,202,203,102,55,220,202,19,130,37,202,203,32,39,202,203,102,
+
+  Some properties
+    Number of codons:                                22
+    Codon size (=number of bits, from Integer.SIZE): 32
+
+3) Create a GE mapper
+
+  Maximum number of wraps: 2
+
+4) Use the GE mapping procedure to convert a genotype to a phenotype
+
+Called: buildDerivationTree()
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 220
+        Chosen rule index: 0
+        Production: <expr><op><expr>
+      Number of used codons: 1
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 40
+        Chosen rule index: 0
+        Production: <expr><op><expr>
+      Number of used codons: 2
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 16
+        Chosen rule index: 0
+        Production: <expr><op><expr>
+      Number of used codons: 3
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 203
+        Chosen rule index: 3
+        Production: <var>
+      Number of used codons: 4
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <var>
+    Rules: <var>::=X|1.0
+      Number of possible productions: 2
+      Multiple productions, using a codon to choose one:
+        Codon value: 101
+        Chosen rule index: 1
+        Production: 1.0
+      Number of used codons: 5
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: 1.0
+  Called: growNode()
+    Nonterminal symbol: <op>
+    Rules: <op>::=+|-|/|*
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 53
+        Chosen rule index: 1
+        Production: -
+      Number of used codons: 6
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: -
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 202
+        Chosen rule index: 2
+        Production: <pre-op>(<expr>)
+      Number of used codons: 7
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <pre-op>
+    Rules: <pre-op>::=Sin
+      Number of possible productions: 1
+      Only one production, using it without consuming a codon.
+        Chosen rule index: 0
+        Production: Sin
+      Number of used codons: 7
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: Sin
+  Called: growNode()
+    Terminal symbol: (
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 203
+        Chosen rule index: 3
+        Production: <var>
+      Number of used codons: 8
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <var>
+    Rules: <var>::=X|1.0
+      Number of possible productions: 2
+      Multiple productions, using a codon to choose one:
+        Codon value: 102
+        Chosen rule index: 0
+        Production: X
+      Number of used codons: 9
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: X
+  Called: growNode()
+    Terminal symbol: )
+  Called: growNode()
+    Nonterminal symbol: <op>
+    Rules: <op>::=+|-|/|*
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 55
+        Chosen rule index: 3
+        Production: *
+      Number of used codons: 10
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: *
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 220
+        Chosen rule index: 0
+        Production: <expr><op><expr>
+      Number of used codons: 11
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 202
+        Chosen rule index: 2
+        Production: <pre-op>(<expr>)
+      Number of used codons: 12
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <pre-op>
+    Rules: <pre-op>::=Sin
+      Number of possible productions: 1
+      Only one production, using it without consuming a codon.
+        Chosen rule index: 0
+        Production: Sin
+      Number of used codons: 12
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: Sin
+  Called: growNode()
+    Terminal symbol: (
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 19
+        Chosen rule index: 3
+        Production: <var>
+      Number of used codons: 13
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <var>
+    Rules: <var>::=X|1.0
+      Number of possible productions: 2
+      Multiple productions, using a codon to choose one:
+        Codon value: 130
+        Chosen rule index: 0
+        Production: X
+      Number of used codons: 14
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: X
+  Called: growNode()
+    Terminal symbol: )
+  Called: growNode()
+    Nonterminal symbol: <op>
+    Rules: <op>::=+|-|/|*
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 37
+        Chosen rule index: 1
+        Production: -
+      Number of used codons: 15
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: -
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 202
+        Chosen rule index: 2
+        Production: <pre-op>(<expr>)
+      Number of used codons: 16
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <pre-op>
+    Rules: <pre-op>::=Sin
+      Number of possible productions: 1
+      Only one production, using it without consuming a codon.
+        Chosen rule index: 0
+        Production: Sin
+      Number of used codons: 16
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: Sin
+  Called: growNode()
+    Terminal symbol: (
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 203
+        Chosen rule index: 3
+        Production: <var>
+      Number of used codons: 17
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <var>
+    Rules: <var>::=X|1.0
+      Number of possible productions: 2
+      Multiple productions, using a codon to choose one:
+        Codon value: 32
+        Chosen rule index: 0
+        Production: X
+      Number of used codons: 18
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: X
+  Called: growNode()
+    Terminal symbol: )
+  Called: growNode()
+    Nonterminal symbol: <op>
+    Rules: <op>::=+|-|/|*
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 39
+        Chosen rule index: 3
+        Production: *
+      Number of used codons: 19
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: *
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 202
+        Chosen rule index: 2
+        Production: <pre-op>(<expr>)
+      Number of used codons: 20
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <pre-op>
+    Rules: <pre-op>::=Sin
+      Number of possible productions: 1
+      Only one production, using it without consuming a codon.
+        Chosen rule index: 0
+        Production: Sin
+      Number of used codons: 20
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: Sin
+  Called: growNode()
+    Terminal symbol: (
+  Called: growNode()
+    Nonterminal symbol: <expr>
+    Rules: <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
+      Number of possible productions: 4
+      Multiple productions, using a codon to choose one:
+        Codon value: 203
+        Chosen rule index: 3
+        Production: <var>
+      Number of used codons: 21
+      Number of used wraps:  1
+  Called: growNode()
+    Nonterminal symbol: <var>
+    Rules: <var>::=X|1.0
+      Number of possible productions: 2
+      Multiple productions, using a codon to choose one:
+        Codon value: 102
+        Chosen rule index: 0
+        Production: X
+      Number of used codons: 22
+      Number of used wraps:  1
+  Called: growNode()
+    Terminal symbol: X
+  Called: growNode()
+    Terminal symbol: )
+
+
+  Derivation tree:
+<expr> (0:220:0:0)
+|_<expr> (1:40:0:1)
+| |_<expr> (2:16:0:2)
+| | |_<expr> (3:203:3:3)
+| | | |_<var> (4:101:1:4)
+| | |   |_1.0
+| | |_<op> (5:53:1:3)
+| | | |_-
+| | |_<expr> (6:202:2:3)
+| |   |_<pre-op>
+| |   | |_Sin
+| |   |_(
+| |   |_<expr> (7:203:3:4)
+| |   | |_<var> (8:102:0:5)
+| |   |   |_X
+| |   |_)
+| |_<op> (9:55:3:2)
+| | |_*
+| |_<expr> (10:220:0:2)
+|   |_<expr> (11:202:2:3)
+|   | |_<pre-op>
+|   | | |_Sin
+|   | |_(
+|   | |_<expr> (12:19:3:4)
+|   | | |_<var> (13:130:0:5)
+|   | |   |_X
+|   | |_)
+|   |_<op> (14:37:1:3)
+|   | |_-
+|   |_<expr> (15:202:2:3)
+|     |_<pre-op>
+|     | |_Sin
+|     |_(
+|     |_<expr> (16:203:3:4)
+|     | |_<var> (17:32:0:5)
+|     |   |_X
+|     |_)
+|_<op> (18:39:3:1)
+| |_*
+|_<expr> (19:202:2:1)
+  |_<pre-op>
+  | |_Sin
+  |_(
+  |_<expr> (20:203:3:2)
+  | |_<var> (21:102:0:3)
+  |   |_X
+  |_)
+
+  Phenotype: 1.0-Sin(X)*Sin(X)-Sin(X)*Sin(X)
+  Mapped completely: true
+
+
+
+Generate JSON files with genotype-to-phenotype mapping data
+=============================================================
+
+Grammar 0
+Grammar 1
+Grammar 2
+Grammar 3
+Grammar 4
+Grammar 5
+Grammar 6
+Grammar 7
+Grammar 8
+Grammar 9
+Grammar 10
+Grammar 11
+Grammar 12
+Grammar 13
+Grammar 14
+Grammar 15
+Grammar 16
+Grammar 17
+Grammar 18
+Grammar 19

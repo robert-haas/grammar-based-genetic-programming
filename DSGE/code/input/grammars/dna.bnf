@@ -1,0 +1,5 @@
+<dna> ::= <bases>
+<bases> ::= <bases><base> | <base>
+<base> ::= <purine> | <pyrimidine>
+<purine> ::= A | G
+<pyrimidine> ::= C | T

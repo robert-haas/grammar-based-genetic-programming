@@ -1,0 +1,337 @@
+Reproduce a paper example of the WHGE mapping with detailed log messages
+========================================================================
+
+1) Create a grammar
+
+<expr> *::= ( <expr> <op> <expr> ) | <num> | <var>
+<op> ::= + | - | * | /
+<var> ::= x | y
+<num> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+2) Create a WHGE genotype (=bitstring)
+
+48:11100111-11110000-10100101-01110001-01100101-00000111
+
+3) Create a WHGE mapper
+
+Call: HierarchicalMapper constructor
+  optionJumpsToTerminalMap: {<expr>=[3, 2, 2], <op>=[1, 1, 1, 1], <var>=[1, 1], <num>=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+  shortestOptionIndexesMap: {<expr>=[1, 2], <op>=[0, 1, 2, 3], <var>=[0, 1], <num>=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+Call: WeightedHierarchicalMapper constructor
+  weightsMap: {<expr>=7, (=0, )=0, *=0, +=0, -=0, /=0, 0=0, 1=0, 2=0, 3=0, 4=0, <num>=4, 5=0, 6=0, <var>=1, 7=0, x=0, 8=0, y=0, 9=0, <op>=2}
+Mapper: WeightedHierarchicalMapper{maxDepth=2, weightOptions=false, weightChildren=true}
+
+4) Use the WHGE mapping procedure to convert a genotype to a phenotype
+
+Call: map()
+
+Call: mapRecursively()
+Nonterminal symbol: "<expr>"
+Genotype: "111001111111000010100101011100010110010100000111"
+RulesFor
+  Number of rules: 3
+  Number of bits:  48
+SplitForRule
+  Genotype lengths and strings: [16:11100111-11110000, 16:10100101-01110001, 16:01100101-00000111]
+  LargestCardIndex
+    Found a single rule with highest relative cardinality: 0.625
+    Chosen rule index: 0
+ApplyRule
+  Number of new nodes: 5
+  New symbols:       : [(, <expr>, <op>, <expr>, )]
+SplitForChildren
+  New genotype lengths and strings: [0:, 21:11100111-11110000-10100, 6:101011, 21:10001011-00101000-00111, 0:]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "("
+
+Call: mapRecursively()
+Nonterminal symbol: "<expr>"
+Genotype: "111001111111000010100"
+RulesFor
+  Number of rules: 3
+  Number of bits:  21
+SplitForRule
+  Genotype lengths and strings: [7:1110011, 7:1111100, 7:0010100]
+  LargestCardIndex
+    Found multiple rules with same highest relative cardinality: 0.714
+    Chosen rule index: 0
+ApplyRule
+  Number of new nodes: 5
+  New symbols:       : [(, <expr>, <op>, <expr>, )]
+SplitForChildren
+  New genotype lengths and strings: [1:1, 9:11001111-1, 2:11, 9:00001010-0, 0:]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "("
+
+Call: mapRecursively()
+Nonterminal symbol: "<expr>"
+Genotype: "110011111"
+RulesFor
+  Number of rules: 3
+  Number of bits:  9
+SplitForRule
+  Genotype lengths and strings: [3:110, 3:011, 3:111]
+  LargestCardIndex
+    Found a single rule with highest relative cardinality: 1
+    Chosen rule index: 2
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [<var>]
+SplitForChildren
+  New genotype lengths and strings: [8:11001111]
+AppendChild
+
+Call: mapRecursively()
+Nonterminal symbol: "<var>"
+Genotype: "11001111"
+RulesFor
+  Number of rules: 2
+  Number of bits:  8
+SplitForRule
+  Genotype lengths and strings: [4:1100, 4:1111]
+  LargestCardIndex
+    Found a single rule with highest relative cardinality: 1
+    Chosen rule index: 1
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [y]
+SplitForChildren
+  New genotype lengths and strings: [7:1100111]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "y"
+
+Call: mapRecursively()
+Nonterminal symbol: "<op>"
+Genotype: "11"
+RulesFor
+  Number of rules: 4
+  Number of bits:  2
+ShortestRuleIndex
+  Chosen rule index: 2
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [*]
+SplitForChildren
+  New genotype lengths and strings: [1:1]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "*"
+
+Call: mapRecursively()
+Nonterminal symbol: "<expr>"
+Genotype: "000010100"
+RulesFor
+  Number of rules: 3
+  Number of bits:  9
+SplitForRule
+  Genotype lengths and strings: [3:000, 3:010, 3:100]
+  LargestCardIndex
+    Found multiple rules with same highest relative cardinality: 0.333
+    Chosen rule index: 0
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [<num>]
+SplitForChildren
+  New genotype lengths and strings: [8:00001010]
+AppendChild
+
+Call: mapRecursively()
+Nonterminal symbol: "<num>"
+Genotype: "00001010"
+RulesFor
+  Number of rules: 10
+  Number of bits:  8
+ShortestRuleIndex
+  Chosen rule index: 2
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [2]
+SplitForChildren
+  New genotype lengths and strings: [7:0000101]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "2"
+
+Call: mapRecursively()
+Terminal symbol: ")"
+
+Call: mapRecursively()
+Nonterminal symbol: "<op>"
+Genotype: "101011"
+RulesFor
+  Number of rules: 4
+  Number of bits:  6
+SplitForRule
+  Genotype lengths and strings: [2:10, 2:10, 1:1, 1:1]
+  LargestCardIndex
+    Found multiple rules with same highest relative cardinality: 1
+    Chosen rule index: 0
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [*]
+SplitForChildren
+  New genotype lengths and strings: [5:10101]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "*"
+
+Call: mapRecursively()
+Nonterminal symbol: "<expr>"
+Genotype: "100010110010100000111"
+RulesFor
+  Number of rules: 3
+  Number of bits:  21
+SplitForRule
+  Genotype lengths and strings: [7:1000101, 7:1001010, 7:0000111]
+  LargestCardIndex
+    Found multiple rules with same highest relative cardinality: 0.429
+    Chosen rule index: 0
+ApplyRule
+  Number of new nodes: 5
+  New symbols:       : [(, <expr>, <op>, <expr>, )]
+SplitForChildren
+  New genotype lengths and strings: [1:1, 9:00010110-0, 2:10, 9:10000011-1, 0:]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "("
+
+Call: mapRecursively()
+Nonterminal symbol: "<expr>"
+Genotype: "000101100"
+RulesFor
+  Number of rules: 3
+  Number of bits:  9
+SplitForRule
+  Genotype lengths and strings: [3:000, 3:101, 3:100]
+  LargestCardIndex
+    Found a single rule with highest relative cardinality: 0.667
+    Chosen rule index: 1
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [<num>]
+SplitForChildren
+  New genotype lengths and strings: [8:00010110]
+AppendChild
+
+Call: mapRecursively()
+Nonterminal symbol: "<num>"
+Genotype: "00010110"
+RulesFor
+  Number of rules: 10
+  Number of bits:  8
+ShortestRuleIndex
+  Chosen rule index: 3
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [3]
+SplitForChildren
+  New genotype lengths and strings: [7:0001011]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "3"
+
+Call: mapRecursively()
+Nonterminal symbol: "<op>"
+Genotype: "10"
+RulesFor
+  Number of rules: 4
+  Number of bits:  2
+ShortestRuleIndex
+  Chosen rule index: 1
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [-]
+SplitForChildren
+  New genotype lengths and strings: [1:1]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "-"
+
+Call: mapRecursively()
+Nonterminal symbol: "<expr>"
+Genotype: "100000111"
+RulesFor
+  Number of rules: 3
+  Number of bits:  9
+SplitForRule
+  Genotype lengths and strings: [3:100, 3:000, 3:111]
+  LargestCardIndex
+    Found a single rule with highest relative cardinality: 1
+    Chosen rule index: 2
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [<var>]
+SplitForChildren
+  New genotype lengths and strings: [8:10000011]
+AppendChild
+
+Call: mapRecursively()
+Nonterminal symbol: "<var>"
+Genotype: "10000011"
+RulesFor
+  Number of rules: 2
+  Number of bits:  8
+SplitForRule
+  Genotype lengths and strings: [4:1000, 4:0011]
+  LargestCardIndex
+    Found a single rule with highest relative cardinality: 0.5
+    Chosen rule index: 1
+ApplyRule
+  Number of new nodes: 1
+  New symbols:       : [y]
+SplitForChildren
+  New genotype lengths and strings: [7:1000001]
+AppendChild
+
+Call: mapRecursively()
+Terminal symbol: "y"
+
+Call: mapRecursively()
+Terminal symbol: ")"
+
+Call: mapRecursively()
+Terminal symbol: ")"
+
+
+Results
+- Derivation tree: <expr>{(,<expr>{(,<expr>{<var>{y}},<op>{*},<expr>{<num>{2}},)},<op>{*},<expr>{(,<expr>{<num>{3}},<op>{-},<expr>{<var>{y}},)},)}
+- Leave nodes: [(, (, y, *, 2, ), *, (, 3, -, y, ), )]
+- Phenotype: ((y*2)*(3-y))
+
+
+
+Generate JSON files with genotype-to-phenotype mapping data
+=============================================================
+
+Grammar 0
+Grammar 1
+Grammar 2
+Grammar 3
+Grammar 4
+Grammar 5
+Grammar 6
+Grammar 7
+Grammar 8
+Grammar 9
+Grammar 10
+Grammar 11
+Grammar 12
+Grammar 13
+Grammar 14
+Grammar 15
+Grammar 16
+Grammar 17
+Grammar 18
+Grammar 19

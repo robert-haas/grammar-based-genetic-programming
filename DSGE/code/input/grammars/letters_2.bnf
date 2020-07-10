@@ -1,0 +1,10 @@
+<letters> ::= <letters><letter> | <letter><letters> | <letter><letters><letter> | <letter>
+<letter> ::= <AA> | <BB> | <CC>
+<AA> ::= <A>
+<BB> ::= <B> | <C>
+<CC> ::= <D> | <E>
+<A> ::= a | b | c | d | e | f
+<B> ::= g | h | i | j | k | l | m | n
+<C> ::= o | p | q | r
+<D> ::= s | t | u | v | w
+<E> ::= x | y | z

@@ -1,0 +1,5 @@
+<S> ::= <A><B><C><D> | <S><D><C><B><A> | <S>f<S>
+<A> ::= aa
+<B> ::= b | bb | bbb
+<C> ::= cc | cccc
+<D> ::= d | dd | ddd | dddd
