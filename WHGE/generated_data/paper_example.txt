@@ -1,6 +1,8 @@
 Reproduce a paper example of the WHGE mapping with detailed log messages
 ========================================================================
 
+The following example was reproduced from https://doi.org/10.1109/TCYB.2018.2876563
+
 1) Create a grammar
 
 <expr> *::= ( <expr> <op> <expr> ) | <num> | <var>
@@ -22,6 +24,7 @@ Call: WeightedHierarchicalMapper constructor
 Mapper: WeightedHierarchicalMapper{maxDepth=2, weightOptions=false, weightChildren=true}
 
 4) Use the WHGE mapping procedure to convert a genotype to a phenotype
+
 Call: map()
 
 Call: mapRecursively()

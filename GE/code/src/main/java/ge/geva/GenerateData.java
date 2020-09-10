@@ -57,6 +57,10 @@ public class GenerateData {
         logger.log(Level.INFO, "Reproduce a paper example of the GE mapping with detailed log messages");
         logger.log(Level.INFO, "======================================================================");
 
+        // Paper
+        logger.log(Level.INFO, "\nThe following example was reproduced from https://doi.org/10.1007/978-1-4615-0447-4 (pp. 37-42)");
+        logger.log(Level.INFO, "An almost identical example is given in https://doi.org/10.1109/4235.942529");
+
         // Grammar
         logger.log(Level.INFO, "\n1) Create a grammar\n");
         String filepath = "paper_oneill2001_ws.bnf";

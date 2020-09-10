@@ -56,6 +56,9 @@ public class GenerateData {
     logger.log(Level.INFO, "Reproduce a paper example of the WHGE mapping with detailed log messages");
     logger.log(Level.INFO, "========================================================================");
 
+    // Paper
+    logger.log(Level.INFO, "\nThe following example was reproduced from https://doi.org/10.1109/TCYB.2018.2876563");
+
     // Grammar
     logger.log(Level.INFO, "\n1) Create a grammar\n");
     File file = new File("input/grammars/paper_bartoli2018_ws.bnf");

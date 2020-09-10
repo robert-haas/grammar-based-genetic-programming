@@ -1,6 +1,6 @@
 # Grammar-based genetic programming
 
-The aim of this repository is to take a close look at the **genotype-to-phenotype mapping procedures** of different grammar-based genetic programming systems (GBGP) in order to be able to reimplement them precisely. Currently covered are the following systems:
+The aim of this repository is to take a close look at the **genotype-to-phenotype mapping procedures** of different **grammar-based genetic programming systems (GBGP)** in order to be able to reimplement them precisely. Currently covered are the following systems:
 
 - Grammatical Evolution (GE)
 - Weighted Hierarchical Grammatical Evolution (WHGE)
@@ -34,12 +34,11 @@ The aim of this repository is to take a close look at the **genotype-to-phenotyp
     [grammatical-evolution.org](http://www.grammatical-evolution.org)
   - Reference implementation:
     [GEVA](http://ncra.ucd.ie/Site/GEVA.html) written in Java
-    
+
     - Journal article on GEVA:
       [O'Neill et al. in 2008](https://doi.org/10.1145/1527063.1527066)
     - Exact version used here:
       [v2.0 from Jun 22, 2011](https://code.google.com/archive/p/geva/downloads)
-    
 
 - Weighted Hierarchical Grammatical Evolution (WHGE)
 

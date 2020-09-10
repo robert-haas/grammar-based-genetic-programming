@@ -37,7 +37,10 @@ def run_minimal_example():
     """
     logging.info('Reproduce a paper example of the DSGE mapping with detailed log messages');
     logging.info('========================================================================\n');
-    
+
+    # Paper
+    logging.info('The following example was reproduced from https://doi.org/10.1145/3071178.3071286\n')
+
     # Grammar
     logging.info('1) Create a grammar\n')
     filepath = os.path.join(DIRPATH, 'paper_assuncao2017.bnf')
@@ -81,7 +84,7 @@ def run_data_generation():
         with open(filepath, 'w') as fp:
             json.dump(data, fp, indent=2)
 
-    
+
     max_depth = 12
     num_mappings = 2000
     for cnt, filename in enumerate(sorted(os.listdir(DIRPATH))):

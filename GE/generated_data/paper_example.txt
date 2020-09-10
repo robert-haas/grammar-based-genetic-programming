@@ -1,6 +1,9 @@
 Reproduce a paper example of the GE mapping with detailed log messages
 ======================================================================
 
+The following example was reproduced from https://doi.org/10.1007/978-1-4615-0447-4 (pp. 37-42)
+An almost identical example is given in https://doi.org/10.1109/4235.942529
+
 1) Create a grammar
 
   <expr>::=<expr><op><expr>|(<expr><op><expr>)|<pre-op>(<expr>)|<var>
